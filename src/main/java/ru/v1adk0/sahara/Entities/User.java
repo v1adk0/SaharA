@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="appuser")
 public class User {
-
+    public enum Sex {MALE, FEMALE};
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
@@ -20,13 +20,26 @@ public class User {
     private int age;
     private int weight;
     private int height;
-    private double bloodstreamSugar;
+    double bloodstreamSugar = 0;
+    double dailyInsulin = 0;
+    Sex sex;
 
-    public User(String name, int age, int weight, int height, double bloodstreamSugar) {
+    public User
+            (String name, Sex sex, int age, int weight, int height, double bloodstreamSugar, double dailyInsulin) {
         this.name = name;
+        this.sex = sex;
         this.age = age;
         this.weight = weight;
         this.height = height;
         this.bloodstreamSugar = bloodstreamSugar;
+        this.dailyInsulin = dailyInsulin;
+    }
+
+    public User(String name, Sex sex, int age, int weight, int height) {
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.weight = weight;
+        this.height = height;
     }
 }
