@@ -25,4 +25,17 @@ class Converter {
                 .mapToDouble(c -> c).sum();
         return ((int)totalCarbs *2);
     }
-}
+
+    String howControlBloodsteamShugar(double bloodstreamSugar) {
+       String answ = switch ((int)bloodstreamSugar) {
+           case 1,2,3 -> "Тебе надо поесть!";
+           case 4,5,6 -> "Все в порядке. Если чувствуешь недомогание - выпей немного сока или молока.";
+           case 7,8 -> "Сделай зарядку или разминку. Не переусердствуй, но вспотей!";
+           case 0 -> "Не смешно! Проверь глюкометр";
+           default -> {
+               double sug = bloodstreamSugar/2;
+               yield String.format("Вколи %s единиц быстрого инсулина", sug);
+           }};
+            return answ;
+       }
+    }
