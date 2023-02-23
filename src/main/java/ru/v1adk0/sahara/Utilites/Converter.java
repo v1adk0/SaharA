@@ -1,11 +1,7 @@
 package ru.v1adk0.sahara.Utilites;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.jetbrains.annotations.NotNull;
-import ru.v1adk0.sahara.Entities.Food;
-import ru.v1adk0.sahara.Entities.FoodIntake;
-import ru.v1adk0.sahara.Entities.User;
+import ru.v1adk0.sahara.Entities.*;
 
 @AllArgsConstructor
 class Converter {
@@ -14,11 +10,11 @@ class Converter {
     FoodIntake foodIntake;
 
 
-    int fromCarbsToBreadUnits(@NotNull Food food) {
+    int fromCarbsToBreadUnits(Food food) {
         return ((int)food.getAmountOfCarbs() * 12);
     }
 
-    double fromBreadUnitsToCarbs(@NotNull int breadUnits) {
+    double fromBreadUnitsToCarbs(int breadUnits) {
         return breadUnits / 12;
     }
 

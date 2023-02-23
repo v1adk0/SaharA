@@ -1,15 +1,14 @@
 package ru.v1adk0.sahara.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import ru.v1adk0.sahara.Enums.MealTime;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -17,23 +16,17 @@ import java.util.UUID;
 @NoArgsConstructor
 public class FoodIntake {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    private MealTime mealTime;
+    @OneToMany(mappedBy = "name")
+    private List<Food> foodStuff = new ArrayList<>();
 
     public FoodIntake(List<Food> foodStuff, MealTime mealTime) {
         this.foodStuff = foodStuff;
         this.mealTime = mealTime;
     }
-    public enum MealTime {BREAKFAST, DINNER, SUPPER, SNACK}
-    List<Food> foodStuff;
-    private MealTime mealTime;
-
-    String setId (List<Food> foodStuff) {
-        String id = String.valueOf(UUID.fromString(foodStuff.toString()));
-       return this.id = id;
+    public void addFood(Food food) {
+        this.foodStuff.add(food);
     }
-    List<Food> addFood(Food food) {
-        foodStuff.add(food);
-        return foodStuff;
-    }
-
 }

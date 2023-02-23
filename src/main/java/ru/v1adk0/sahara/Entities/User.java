@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.v1adk0.sahara.Enums.Sex;
 
+;
 
 @Entity
 @Data
@@ -12,7 +14,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="appuser")
 public class User {
-    public enum Sex {MALE, FEMALE};
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
