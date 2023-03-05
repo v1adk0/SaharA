@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import ru.v1adk0.sahara.Enums.MealTime;
 
 import java.util.ArrayList;
@@ -14,10 +13,13 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "food_intake")
 public class FoodIntake {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column
     private String id;
+    @Column(name = "meal_time")
     private MealTime mealTime;
     @OneToMany(mappedBy = "name")
     private List<Food> foodStuff = new ArrayList<>();

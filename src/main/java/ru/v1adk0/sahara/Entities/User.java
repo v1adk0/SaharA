@@ -16,13 +16,21 @@ import ru.v1adk0.sahara.Enums.Sex;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column
     private int id;
+    @Column
     private String name;
+    @Column
     private int age;
+    @Column
     private int weight;
+    @Column
     private int height;
+    @Column(name = "bloodstream_sugar")
     double bloodstreamSugar = 0;
+    @Column(name = "daily_insulin")
     double dailyInsulin = 0;
+    @Column
     Sex sex;
 
     public User
